@@ -16,13 +16,13 @@ from setuptools import setup
 
 
 setup(
-    name='dask-jobqueue-scheduler',
+    name='dask-scheduler',
     version='0.1',
     license='MIT',
-    description='Job scheduler server for dask-jobqueue',
+    description='Simple CLI for starting dask scheduler servers including those on queueing systems like SLURM and PBS',
     author='Samuel D. Lotz',
     author_email='samuel.lotz@salotz.info',
-    url='https://github.com/salotz/dask_jobqueue_scheduler',
+    url='https://github.com/salotz/dask_scheduler',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
@@ -41,7 +41,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'dask_jobqueue_scheduler = scheduler:cli',
+            'dask_scheduler = scheduler:cli',
         ]
     },
 )

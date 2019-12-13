@@ -15,7 +15,7 @@ connect to for launching jobs. This simple module provides this.
 Just install:
 
 #+begin_src bash
-pip install 
+pip install git+https://github.com/salotz/dask_scheduler.git
 #+end_src
 
 
@@ -23,10 +23,10 @@ Then from the cluster with the job queue system run this command (for
 SLURM):
 
 #+begin_src bash
-dask_jobqueue_scheduler slurm
+dask_scheduler slurm
 #+end_src
 
-See ~dask_jobqueue_scheduler --help~ for all of the options.
+See ~dask_scheduler slurm --help~ for all of the options.
 
 This will start it with the default settings and should give you a URL
 to use.
