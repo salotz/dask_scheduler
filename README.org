@@ -1,0 +1,50 @@
+
+
+* Dask Jobqueue Scheduler Daemon
+
+The dask jobqueue is an excellent interface to use dask with typical
+HPCC job queueing systems like SLURM or PBS.
+
+#+begin_center
+NOTE: only supports SLURM at the moment. But others should be as well. Make a PR!
+#+end_center
+
+However, it doesn't provide an actual scheduling server that you can
+connect to for launching jobs. This simple module provides this.
+
+Just install:
+
+#+begin_src bash
+pip install 
+#+end_src
+
+
+Then from the cluster with the job queue system run this command (for
+SLURM):
+
+#+begin_src bash
+dask_jobqueue_scheduler slurm
+#+end_src
+
+See ~dask_jobqueue_scheduler --help~ for all of the options.
+
+This will start it with the default settings and should give you a URL
+to use.
+
+Then you just need to connect to it with a dask client to submit jobs:
+
+#+begin_src python
+  from dask.distributed import Client
+
+  client = Client()
+
+  def work_func(b):
+
+      return 3 + b
+
+  results = client.submit(work_func, [0,1,2,3]).result()
+#+end_src
+
+
+
+
