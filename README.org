@@ -26,6 +26,15 @@ SLURM):
 dask_scheduler slurm
 #+end_src
 
+You should see something like:
+
+#+begin_example
+Scheduler address: tcp://10.3.8.48:42089
+Dashboard port:
+#+end_example
+
+Depending on the network settings you might not get a dashboard
+
 See ~dask_scheduler slurm --help~ for all of the options.
 
 This will start it with the default settings and should give you a URL
@@ -36,7 +45,7 @@ Then you just need to connect to it with a dask client to submit jobs:
 #+begin_src python
   from dask.distributed import Client
 
-  client = Client()
+  client = Client("http://10.3.8.48:42089")
 
   def work_func(b):
 
