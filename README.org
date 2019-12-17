@@ -51,7 +51,11 @@ Then you just need to connect to it with a dask client to submit jobs:
 
       return 3 + b
 
-  results = client.submit(work_func, [0,1,2,3]).result()
+  results = client.submit(work_func, 3).result()
+
+  results = []
+  for result in client.map(work_func, [0,1,2,3,4]):
+      results.append(result.result())
 #+end_src
 
 
